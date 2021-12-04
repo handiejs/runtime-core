@@ -1,0 +1,53 @@
+{
+  "name": "@handie/runtime-core",
+  "version": "0.0.0",
+  "description": "Runtime foundation of Handie",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "handie",
+    "ui",
+    "framework",
+    "ui-framework",
+    "ui-solution",
+    "config-driven",
+    "admin",
+    "admin-dashboard",
+    "management-system",
+    "management-systems"
+  ],
+  "author": "Ourai Lin <ourairyu@gmail.com> (https://ourai.ws/)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/handiejs/runtime-core.git"
+  },
+  "homepage": "https://www.yuque.com/handie",
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "build": "tsc",
+    "prerelease": "npm run build",
+    "release": "npm publish"
+  },
+  "peerDependencies": {
+    "petals-ui": "^0.0.17"
+  },
+  "dependencies": {
+    "@ntks/event-emitter": "^0.0.0",
+    "@ntks/toolbox": "^0.0.6",
+    "organik": "0.0.7"
+  },
+  "devDependencies": {
+    "@ntks/eslint-config": "0.0.0",
+    "@types/node": "^13.11.1",
+    "eslint": "^7.21.0",
+    "petals-ui": "0.0.17",
+    "prettier": "^2.2.1",
+    "rimraf": "^3.0.0",
+    "typescript": "^4.1.3"
+  }
+}
