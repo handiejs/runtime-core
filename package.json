@@ -31,7 +31,7 @@
     "prebuild": "rimraf dist",
     "build": "tsc",
     "prerelease": "npm run build",
-    "release": "npm publish"
+    "release": "npm publish --access=public"
   },
   "peerDependencies": {
     "petals-ui": "^0.0.17"
