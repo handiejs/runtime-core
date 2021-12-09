@@ -34,12 +34,12 @@
     "release": "npm publish --access=public"
   },
   "peerDependencies": {
-    "petals-ui": "^0.0.17"
+    "petals-ui": "~0.0.17"
   },
   "dependencies": {
-    "@ntks/event-emitter": "^0.0.0",
-    "@ntks/toolbox": "^0.0.6",
-    "organik": "0.0.7"
+    "@ntks/event-emitter": "~0.0.0",
+    "@ntks/toolbox": "~0.0.6",
+    "organik": "~0.0.8"
   },
   "devDependencies": {
     "@ntks/eslint-config": "0.0.0",
