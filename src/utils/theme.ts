@@ -74,4 +74,10 @@ function getBehaviorByKey(key: string, defaultBehavior?: any): any {
   return behavior === undefined ? defaultBehavior : behavior;
 }
 
-export { setDefaultTheme, getThemeOption, getBehaviorByKey };
+function resolveFieldBehavior(config: Record<string, any>, key: string, defaultBehavior: any): any {
+  return config[key] === undefined
+    ? getBehaviorByKey(`common.field.${key}`, defaultBehavior)
+    : config[key];
+}
+
+export { setDefaultTheme, getThemeOption, getBehaviorByKey, resolveFieldBehavior };
