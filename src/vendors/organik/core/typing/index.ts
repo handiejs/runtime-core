@@ -5,5 +5,6 @@ export * from './render-type';
 export * from './validator';
 export * from './input';
 export * from './http';
+export * from './app';
 export * from './metadata';
 export * from './context';

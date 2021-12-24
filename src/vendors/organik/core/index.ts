@@ -2,6 +2,7 @@ export * from './typing';
 export { registerComponent, getControl, getWidget, getRenderer } from './component';
 export { registerDataType } from './data-type';
 export { registerRenderType } from './render-type';
+export { registerAppHelper, getAppHelper } from './app';
 export {
   registerModules,
   getActions,

@@ -1,4 +1,5 @@
 import { RenderType } from '../render-type';
+import { AppHelper } from '../app';
 import { ConfigType, ComponentRenderer, ContextExpression } from './base';
 
 type ActionCategory = 'server' | 'client';
@@ -20,7 +21,7 @@ interface ActionDescriptor<CT extends ConfigType = ConfigType> {
   renderType?: RenderType;
   widget?: ComponentRenderer;
   config?: CT;
-  execute?: <ViewContext>(viewContext: ViewContext, vm: any) => Promise<any> | any;
+  execute?: <ViewContext>(viewContext: ViewContext, app: AppHelper) => Promise<any> | any;
 }
 
 interface ServerAction extends ActionDescriptor {
