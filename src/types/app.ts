@@ -1,4 +1,9 @@
-import { ComponentCtor, ComponentDescriptor, ActionDescriptor, ModuleDescriptor } from 'organik';
+import {
+  ComponentCtor,
+  ComponentDescriptor,
+  ActionDescriptor,
+  ModuleDescriptor,
+} from '../vendors/organik';
 
 import { ThemeOptions } from './theme';
 

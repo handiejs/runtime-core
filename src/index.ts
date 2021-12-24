@@ -8,7 +8,7 @@ import {
 } from './types/view';
 
 export { EventWithNamespace, EventHandler, EventHandlers } from '@ntks/event-emitter';
-export * from 'organik';
+export * from './vendors/organik';
 export { registerAndLoadIconProviders } from 'petals-ui/dist/icon';
 
 export * from './types';

@@ -1,4 +1,4 @@
-import { DataValue } from 'organik';
+import { DataValue } from '../vendors/organik';
 
 type ObjectValue = Record<string, any>;
 

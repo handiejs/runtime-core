@@ -1,5 +1,6 @@
-import { registerComponent, registerAction, registerModules } from 'organik';
 import { registerAndLoadIconProviders } from 'petals-ui/dist/icon';
+
+import { registerComponent, registerAction, registerModules } from '../vendors/organik';
 
 import { AppDescriptor, AppInstance } from '../types';
 import { setDefaultTheme } from './theme';

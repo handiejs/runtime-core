@@ -1,4 +1,4 @@
-import { DataValue, DataTypeDescriptor, registerDataType } from 'organik';
+import { DataValue, DataTypeDescriptor, registerDataType } from '../vendors/organik';
 
 import { BuiltInDataType } from '../types/data-type';
 import { isBoolean, isNumber, isString, isArray, isPlainObject } from '../utils';

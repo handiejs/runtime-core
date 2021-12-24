@@ -1,4 +1,4 @@
-import { ConfigType, ClientAction, ValidationResult } from 'organik';
+import { ConfigType, ClientAction, ValidationResult } from '../vendors/organik';
 
 import { ViewFieldDescriptor, FilterDescriptor } from './input';
 

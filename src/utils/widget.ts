@@ -1,11 +1,12 @@
 import { isString } from '@ntks/toolbox';
+
 import {
   ComponentRenderer,
   ComponentCtor,
   ModuleContext,
   isWidgetDependency,
   getWidget,
-} from 'organik';
+} from '../vendors/organik';
 
 function resolveWidgetCtor(
   moduleContext: ModuleContext,

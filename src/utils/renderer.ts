@@ -1,4 +1,4 @@
-import { DataType, RenderType } from 'organik';
+import { DataType, RenderType } from '../vendors/organik';
 
 import { BuiltInDataType } from '../types/data-type';
 import { ViewFieldDescriptor, FilterDescriptor } from '../types/input';

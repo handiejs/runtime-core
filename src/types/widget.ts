@@ -1,4 +1,4 @@
-import { ClientAction, SearchCondition, ValidationResult } from 'organik';
+import { ClientAction, SearchCondition, ValidationResult } from '../vendors/organik';
 
 import { EnumFieldOption, FilterDescriptor, ViewFieldDescriptor } from './input';
 

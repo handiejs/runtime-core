@@ -1,4 +1,9 @@
-import { DataType, InputDescriptor, InputPropChecker, registerInputPropCheckers } from 'organik';
+import {
+  DataType,
+  InputDescriptor,
+  InputPropChecker,
+  registerInputPropCheckers,
+} from '../vendors/organik';
 
 import { BuiltInDataType } from '../types/data-type';
 import { isNumber } from '../utils';

@@ -1,4 +1,4 @@
-import { RenderTypeDescriptor, registerRenderType } from 'organik';
+import { RenderTypeDescriptor, registerRenderType } from '../vendors/organik';
 
 const viewRenderTypeDescriptors: RenderTypeDescriptor[] = [
   // List view

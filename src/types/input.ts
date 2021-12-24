@@ -6,7 +6,7 @@ import {
   FieldDescriptor as UnsureTypeField,
   FilterDescriptor as UnsureTypeFilter,
   ViewFieldDescriptor as UnsureTypeViewField,
-} from 'organik';
+} from '../vendors/organik';
 
 // Model fields
 

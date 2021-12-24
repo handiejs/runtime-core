@@ -8,7 +8,7 @@ import {
   ViewContextDescriptor as _ViewContextDescriptor,
   ListViewContextDescriptor as _ListViewContextDescriptor,
   ObjectViewContextDescriptor as _ObjectViewContextDescriptor,
-} from 'organik';
+} from '../vendors/organik';
 
 import { ActionWidgetConfig } from './config';
 import { ObjectValue } from './value';
