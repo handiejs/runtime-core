@@ -9,24 +9,24 @@ interface ActionRendererProps {
 interface FieldRendererProps {
   readonly field: ViewFieldDescriptor;
   readonly value: any;
-  readonly readonly: boolean;
-  readonly onChange: (fieldName: string, value: any) => void;
+  readonly readonly?: boolean;
+  readonly onChange?: (fieldName: string, value: any) => void;
 }
 
 interface FilterRendererProps {
   readonly filter: FilterDescriptor;
   readonly value: any;
-  readonly onChange: (filterName: string, value: any) => void;
+  readonly onChange?: (filterName: string, value: any) => void;
 }
 
 interface FormRendererProps {
   readonly fields: ViewFieldDescriptor[];
   readonly value: Record<string, any>;
-  readonly readonly: boolean;
-  readonly validation: Record<string, ValidationResult>;
   readonly config: ConfigType;
-  readonly className: any;
-  readonly onChange: (fieldName: string, value: any) => void;
+  readonly readonly?: boolean;
+  readonly validation?: Record<string, ValidationResult>;
+  readonly className?: any;
+  readonly onChange?: (fieldName: string, value: any) => void;
 }
 
 interface ViewRendererProps {
