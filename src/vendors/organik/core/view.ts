@@ -1,4 +1,4 @@
-import { isFunction, capitalize } from '@ntks/toolbox';
+import { isFunction, noop } from '@ntks/toolbox';
 
 import {
   ComponentCtor,
@@ -6,18 +6,24 @@ import {
   ConfigType,
   ModuleContext,
   ComponentRenderer,
+  ViewDescriptor,
   ListViewContextDescriptor,
   ObjectViewContextDescriptor,
   ListViewContext,
   ObjectViewContext,
 } from './typing';
 import { createCreator } from './creator';
-import { getWidget } from './component';
 import { createViewContext } from './context';
 
+type ViewWidgetResolver = (view: ViewDescriptor) => ComponentRenderer;
 type MixedViewContext<VT, CT> = ListViewContext<VT, CT> | ObjectViewContext<VT, CT>;
-
 type ViewProvider = { [key: string]: any };
+
+let viewWidgetResolver: ViewWidgetResolver = (() => noop) as ViewWidgetResolver;
+
+function setViewWidgetResolver(resolver: ViewWidgetResolver): void {
+  viewWidgetResolver = resolver;
+}
 
 const [getViewCreator, setViewCreator] = createCreator(
   (
@@ -47,21 +53,7 @@ function createView<VT, CT>(
     provider = { ...provider, ...providerGetter!() };
   }
 
-  let renderer: ComponentRenderer;
-
-  const { renderType, widget } = view;
-
-  if (widget) {
-    if (isFunction(widget)) {
-      renderer = widget as ComponentCtor;
-    } else {
-      renderer = getWidget(widget as string) || widget;
-    }
-  } else {
-    renderer = getWidget(`${capitalize(renderType || '')}ViewWidget`) || '';
-  }
-
-  return getViewCreator()(resolved, provider, renderer);
+  return getViewCreator()(resolved, provider, viewWidgetResolver(view));
 }
 
-export { setViewCreator, createView };
+export { setViewWidgetResolver, setViewCreator, createView };

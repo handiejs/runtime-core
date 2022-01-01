@@ -26,4 +26,4 @@ export {
   setObjectViewContextCreator,
   createViewContext,
 } from './context';
-export { setViewCreator, createView } from './view';
+export { setViewWidgetResolver, setViewCreator, createView } from './view';

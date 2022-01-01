@@ -1,3 +1,5 @@
+import './presets';
+
 import { FieldDescriptor, FilterDescriptor, ViewFieldDescriptor } from './types/input';
 import {
   ModelDescriptor,
