@@ -147,5 +147,6 @@ export {
   FieldDescriptor,
   DynamicRelationFilter,
   FilterDescriptor,
+  UnknownViewField,
   ViewFieldDescriptor,
 };
