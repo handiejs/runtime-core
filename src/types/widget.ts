@@ -1,8 +1,4 @@
-import { SearchCondition, ValidationResult } from '../vendors/organik';
-
-interface SearchWidgetState {
-  condition: SearchCondition;
-}
+import { ValidationResult } from '../vendors/organik';
 
 interface ViewWidgetState {
   loading: boolean;
@@ -21,4 +17,4 @@ interface ObjectViewWidgetState extends ViewWidgetState {
   validation: Record<string, ValidationResult>;
 }
 
-export { SearchWidgetState, ViewWidgetState, ListViewWidgetState, ObjectViewWidgetState };
+export { ViewWidgetState, ListViewWidgetState, ObjectViewWidgetState };
