@@ -1,34 +1,6 @@
-import { ClientAction, SearchCondition, ValidationResult } from '../vendors/organik';
+import { SearchCondition, ValidationResult } from '../vendors/organik';
 
-import { EnumFieldOption, FilterDescriptor, ViewFieldDescriptor } from './input';
-
-interface ActionWidgetProps {
-  readonly action: ClientAction;
-}
-
-interface ActionWidgetState {
-  disabled: boolean;
-}
-
-interface FieldWidgetProps<ValueType> {
-  readonly field: ViewFieldDescriptor;
-  readonly value: ValueType;
-  readonly onChange: (value: ValueType) => void;
-}
-
-interface ResolvedEnumFieldOption extends Omit<EnumFieldOption, 'available'> {
-  disabled: boolean;
-}
-
-interface EnumFieldWidgetState {
-  internalOptions: EnumFieldOption[];
-  options: ResolvedEnumFieldOption[];
-  optionMap: Record<string, EnumFieldOption>;
-}
-
-interface RelationFieldWidgetState<ValueType> {
-  internalValue: ValueType;
-}
+import { EnumFieldOption, FilterDescriptor } from './input';
 
 interface FilterWidgetProps<ValueType> {
   readonly filter: FilterDescriptor;
@@ -63,12 +35,6 @@ interface ObjectViewWidgetState extends ViewWidgetState {
 }
 
 export {
-  ActionWidgetProps,
-  ActionWidgetState,
-  FieldWidgetProps,
-  ResolvedEnumFieldOption,
-  EnumFieldWidgetState,
-  RelationFieldWidgetState,
   FilterWidgetProps,
   EnumFilterWidgetState,
   SearchWidgetState,

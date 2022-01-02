@@ -24,6 +24,10 @@ interface EnumFieldWidgetState {
   optionMap: Record<string, EnumFieldOption>;
 }
 
+interface RelationFieldWidgetState<ValueType> {
+  internalValue: ValueType;
+}
+
 interface IFieldWidget<ValueType> {
   readonly field: ViewFieldDescriptor;
   readonly value: ValueType;
@@ -36,5 +40,6 @@ export {
   EnumFieldWidgetConfig,
   ResolvedEnumFieldOption,
   EnumFieldWidgetState,
+  RelationFieldWidgetState,
   IFieldWidget,
 };

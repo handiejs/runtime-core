@@ -148,5 +148,6 @@ export {
   DynamicRelationFilter,
   FilterDescriptor,
   UnknownViewField,
+  RelationViewField,
   ViewFieldDescriptor,
 };
