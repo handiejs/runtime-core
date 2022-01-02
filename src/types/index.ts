@@ -8,7 +8,6 @@ export {
   FieldConfig,
   TableViewConfig,
 } from './view';
-export * from './widget';
 export * from './renderer';
 export * from './theme';
 export * from './app';
