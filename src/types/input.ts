@@ -145,6 +145,7 @@ export {
   MultiEnumField,
   DynamicRelationField,
   FieldDescriptor,
+  UnknownFilter,
   DynamicRelationFilter,
   FilterDescriptor,
   UnknownViewField,

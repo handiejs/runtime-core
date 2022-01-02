@@ -1,4 +1,4 @@
-import { isString, isNumeric, isFunction } from '@ntks/toolbox';
+import { isString, isNumeric, isFunction, includes } from '@ntks/toolbox';
 
 import {
   ComponentRenderer,
@@ -10,7 +10,14 @@ import {
   getWidget,
 } from '../vendors/organik';
 
-import { EnumFieldOption, EnumFieldOptionGetter, EnumField } from '../types/input';
+import { BuiltInDataType } from '../types/data-type';
+import {
+  EnumFieldOption,
+  EnumFieldOptionGetter,
+  EnumField,
+  FilterDescriptor,
+  ViewFieldDescriptor,
+} from '../types/input';
 import { cacheDynamicEnumOptions, getCachedEnumOptions } from '../utils/input';
 
 function resolveWidgetCtor(
@@ -80,6 +87,33 @@ function renderFormFieldNodes<
   return formFieldNodes;
 }
 
+function resolvePlaceholder(
+  fieldOrFilter: ViewFieldDescriptor | FilterDescriptor,
+  behaviorFromConfig: boolean | undefined,
+  behaviorFromTheme: boolean,
+): string {
+  let defaultPlaceholder: string = '';
+
+  if (fieldOrFilter.dataType) {
+    defaultPlaceholder = `${
+      includes(fieldOrFilter.dataType, [
+        BuiltInDataType.String,
+        BuiltInDataType.Text,
+        BuiltInDataType.Integer,
+        BuiltInDataType.Float,
+      ])
+        ? '请输入'
+        : '请选择'
+    }${fieldOrFilter.label || ''}`;
+  }
+
+  const showHintAsPlaceholder =
+    behaviorFromConfig === undefined ? behaviorFromTheme : behaviorFromConfig;
+  const placeholder = fieldOrFilter.placeholder || defaultPlaceholder;
+
+  return showHintAsPlaceholder ? fieldOrFilter.hint || placeholder : placeholder;
+}
+
 function resolveEnumOptions(
   context: ViewContext,
   fieldOrFilter: EnumField,
@@ -106,4 +140,4 @@ function resolveEnumOptions(
   }
 }
 
-export { resolveWidgetCtor, renderFormFieldNodes, resolveEnumOptions };
+export { resolveWidgetCtor, renderFormFieldNodes, resolvePlaceholder, resolveEnumOptions };

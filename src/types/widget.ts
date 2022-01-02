@@ -1,18 +1,5 @@
 import { SearchCondition, ValidationResult } from '../vendors/organik';
 
-import { EnumFieldOption, FilterDescriptor } from './input';
-
-interface FilterWidgetProps<ValueType> {
-  readonly filter: FilterDescriptor;
-  readonly value: ValueType;
-  readonly onChange: (value: ValueType) => void;
-}
-
-interface EnumFilterWidgetState {
-  options: EnumFieldOption[];
-  optionMap: Record<string, EnumFieldOption>;
-}
-
 interface SearchWidgetState {
   condition: SearchCondition;
 }
@@ -34,11 +21,4 @@ interface ObjectViewWidgetState extends ViewWidgetState {
   validation: Record<string, ValidationResult>;
 }
 
-export {
-  FilterWidgetProps,
-  EnumFilterWidgetState,
-  SearchWidgetState,
-  ViewWidgetState,
-  ListViewWidgetState,
-  ObjectViewWidgetState,
-};
+export { SearchWidgetState, ViewWidgetState, ListViewWidgetState, ObjectViewWidgetState };

@@ -1,8 +1,8 @@
 import { DataValue } from '../../vendors/organik';
 
-import { BuiltInDataType } from '../../types/data-type';
 import { UnknownViewField, ViewFieldDescriptor } from '../../types/input';
-import { isBoolean, isFunction, includes } from '../../utils';
+import { isBoolean, isFunction } from '../../utils';
+import { resolvePlaceholder } from '../../utils/widget';
 
 import { BaseHeadlessWidget } from '../base';
 import { FieldWidgetConfig, IFieldWidget } from './typing';
@@ -21,32 +21,11 @@ class FieldHeadlessWidget<
   }
 
   public getPlaceholder(): string {
-    let { showHintAsPlaceholder } = this.getConfig();
-
-    if (showHintAsPlaceholder === undefined) {
-      showHintAsPlaceholder = this.getCommonBehavior('field.showHintAsPlaceholder');
-    }
-
-    const field = this.getField();
-
-    let defaultPlaceholder: string = '';
-
-    if (field.dataType) {
-      defaultPlaceholder = `${
-        includes(field.dataType, [
-          BuiltInDataType.String,
-          BuiltInDataType.Text,
-          BuiltInDataType.Integer,
-          BuiltInDataType.Float,
-        ])
-          ? '请输入'
-          : '请选择'
-      }${field.label || ''}`;
-    }
-
-    const placeholder = field.placeholder || defaultPlaceholder;
-
-    return showHintAsPlaceholder ? field.hint || placeholder : placeholder;
+    return resolvePlaceholder(
+      this.getField(),
+      this.getConfig().showHintAsPlaceholder,
+      this.getCommonBehavior('field.showHintAsPlaceholder'),
+    );
   }
 
   public isValidationRulesShownAsNative(configFromView: boolean | undefined): boolean {
