@@ -1,11 +1,11 @@
 import { EnumFieldOption, FilterDescriptor } from '../input';
-import { BaseWidgetConfig } from './base';
+import { BaseWidgetConfig, BaseWidgetState } from './base';
 
 interface FilterWidgetConfig extends BaseWidgetConfig {
   readonly showHintAsPlaceholder?: boolean;
 }
 
-interface EnumFilterWidgetState {
+interface EnumFilterWidgetState extends BaseWidgetState {
   options: EnumFieldOption[];
   optionMap: Record<string, EnumFieldOption>;
 }

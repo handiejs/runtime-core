@@ -1,6 +1,6 @@
 import { ValidationResult } from '../../vendors/organik';
 
-import { BaseWidgetConfig } from './base';
+import { BaseWidgetConfig, BaseWidgetState } from './base';
 
 interface ViewWidgetConfig extends BaseWidgetConfig {}
 
@@ -20,7 +20,7 @@ interface TableViewWidgetConfig extends ListViewWidgetConfig {
   readonly hidePagination?: boolean;
 }
 
-interface ViewWidgetState {
+interface ViewWidgetState extends BaseWidgetState {
   loading: boolean;
 }
 

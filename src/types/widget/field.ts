@@ -1,5 +1,5 @@
 import { EnumFieldOption, ViewFieldDescriptor } from '../input';
-import { BaseWidgetConfig } from './base';
+import { BaseWidgetConfig, BaseWidgetState } from './base';
 
 interface FieldWidgetConfig extends BaseWidgetConfig {
   readonly showHintAsPlaceholder?: boolean;
@@ -19,13 +19,13 @@ interface ResolvedEnumFieldOption extends Omit<EnumFieldOption, 'available'> {
   disabled: boolean;
 }
 
-interface EnumFieldWidgetState {
+interface EnumFieldWidgetState extends BaseWidgetState {
   internalOptions: EnumFieldOption[];
   options: ResolvedEnumFieldOption[];
   optionMap: Record<string, EnumFieldOption>;
 }
 
-interface RelationFieldWidgetState<ValueType> {
+interface RelationFieldWidgetState<ValueType> extends BaseWidgetState {
   internalValue: ValueType;
 }
 

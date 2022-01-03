@@ -1,10 +1,10 @@
 import { SearchCondition } from '../../vendors/organik';
 
-import { BaseWidgetConfig } from './base';
+import { BaseWidgetConfig, BaseWidgetState } from './base';
 
 interface SearchWidgetConfig extends BaseWidgetConfig {}
 
-interface SearchWidgetState {
+interface SearchWidgetState extends BaseWidgetState {
   condition: SearchCondition;
 }
 

@@ -2,4 +2,6 @@ interface BaseWidgetConfig {
   className?: string;
 }
 
-export { BaseWidgetConfig };
+interface BaseWidgetState {}
+
+export { BaseWidgetConfig, BaseWidgetState };
