@@ -1,9 +1,9 @@
 import { ViewContext } from '../../vendors/organik';
 
 import { EnumFieldOption, EnumField } from '../../types/input';
+import { FilterWidgetConfig } from '../../types/widget/filter';
 import { resolveEnumOptions } from '../../utils/widget';
 
-import { FilterWidgetConfig } from './typing';
 import { FilterHeadlessWidget } from './Filter';
 
 class EnumFilterHeadlessWidget<

@@ -2,10 +2,10 @@ import { ViewContext, runExpression } from '../../vendors/organik';
 
 import { ObjectValue } from '../../types';
 import { EnumFieldOption, EnumField } from '../../types/input';
+import { EnumFieldWidgetConfig, ResolvedEnumFieldOption } from '../../types/widget/field';
 import { isString } from '../../utils';
 import { resolveEnumOptions } from '../../utils/widget';
 
-import { EnumFieldWidgetConfig, ResolvedEnumFieldOption } from './typing';
 import { FieldHeadlessWidget } from './Field';
 
 class EnumFieldHeadlessWidget<

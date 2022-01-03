@@ -1,10 +1,10 @@
 import { DataValue } from '../../vendors/organik';
 
 import { UnknownFilter, FilterDescriptor } from '../../types/input';
+import { FilterWidgetConfig, IFilterWidget } from '../../types/widget/filter';
 import { resolvePlaceholder } from '../../utils/widget';
 
 import { BaseHeadlessWidget } from '../base';
-import { FilterWidgetConfig, IFilterWidget } from './typing';
 
 class FilterHeadlessWidget<
   VT extends DataValue = DataValue,

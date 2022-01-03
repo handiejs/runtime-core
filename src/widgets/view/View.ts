@@ -1,5 +1,5 @@
+import { ViewWidgetConfig, IViewWidget } from '../../types/widget/view';
 import { BaseHeadlessWidget } from '../base';
-import { ViewWidgetConfig, IViewWidget } from './typing';
 
 class ViewHeadlessWidget<CT extends ViewWidgetConfig = ViewWidgetConfig> extends BaseHeadlessWidget<
   IViewWidget,

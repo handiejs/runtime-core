@@ -43,7 +43,7 @@ function renderFormFieldNodes<
   NodeType
 >(
   descriptors: DescriptorType[],
-  arrangement: string,
+  arrangement: string | undefined,
   renderChild: (descriptor: DescriptorType) => NodeType,
   renderRow: (descriptors: DescriptorType[], fakeIndex: number) => NodeType,
 ): NodeType[] {

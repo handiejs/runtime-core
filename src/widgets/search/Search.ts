@@ -1,7 +1,7 @@
 import { ListViewContext, SearchDescriptor } from '../../vendors/organik';
 
+import { SearchWidgetConfig, ISearchWidget } from '../../types/widget/search';
 import { BaseHeadlessWidget } from '../base';
-import { SearchWidgetConfig, ISearchWidget } from './typing';
 
 class SearchHeadlessWidget<
   CT extends SearchWidgetConfig = SearchWidgetConfig

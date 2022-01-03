@@ -8,9 +8,9 @@ import {
 
 import { ObjectValue, ListValue } from '../../types';
 import { DynamicRelationField, RelationViewField } from '../../types/input';
+import { FieldWidgetConfig } from '../../types/widget/field';
 import { noop } from '../../utils';
 
-import { FieldWidgetConfig } from './typing';
 import { FieldHeadlessWidget } from './Field';
 
 class RelationFieldHeadlessWidget<

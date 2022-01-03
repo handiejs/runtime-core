@@ -1,6 +1,7 @@
-import { EnumFieldOption, ViewFieldDescriptor } from '../../types/input';
+import { EnumFieldOption, ViewFieldDescriptor } from '../input';
+import { BaseWidgetConfig } from './base';
 
-interface FieldWidgetConfig {
+interface FieldWidgetConfig extends BaseWidgetConfig {
   readonly showHintAsPlaceholder?: boolean;
 }
 

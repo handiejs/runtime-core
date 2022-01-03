@@ -1,6 +1,7 @@
-import { EnumFieldOption, FilterDescriptor } from '../../types/input';
+import { EnumFieldOption, FilterDescriptor } from '../input';
+import { BaseWidgetConfig } from './base';
 
-interface FilterWidgetConfig {
+interface FilterWidgetConfig extends BaseWidgetConfig {
   readonly showHintAsPlaceholder?: boolean;
 }
 

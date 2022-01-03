@@ -33,14 +33,6 @@ type FieldComponentRenderer = ComponentRenderer | CellComponentRenderer<TableCol
 
 type FieldConfig = Omit<TableColumn, 'prop' | 'label' | 'render' | 'isValid'>;
 
-interface TableViewConfig {
-  checkable?: boolean;
-  selectionColumnWidth?: number | string;
-  serialNumberColumnWidth?: number | string;
-  operationColumnWidth?: number | string;
-  hidePagination?: boolean;
-}
-
 interface ModelDescriptor extends Omit<_ModelDescriptor, 'fields'> {
   fields: FieldDescriptor[];
 }
@@ -80,7 +72,6 @@ export {
   TableColumn,
   FieldComponentRenderer,
   FieldConfig,
-  TableViewConfig,
   ModelDescriptor,
   ViewDescriptor,
   ViewContextDescriptor,

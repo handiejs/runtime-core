@@ -1,9 +1,12 @@
 import { ClientAction } from '../../vendors/organik';
 
-interface ActionWidgetConfig {
+import { BaseWidgetConfig } from './base';
+
+interface ActionWidgetConfig extends BaseWidgetConfig {
   readonly icon?: string;
   readonly iconOnly?: boolean;
   readonly showIcon?: boolean;
+  readonly disableWhenNoSelection?: boolean;
 }
 
 interface IActionWidget<CT extends ActionWidgetConfig = ActionWidgetConfig> {

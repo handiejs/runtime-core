@@ -1,8 +1,8 @@
 import { ClientAction, ViewContext, getAppHelper } from '../../vendors/organik';
 
+import { ActionWidgetConfig, IActionWidget } from '../../types/widget/action';
 import { isString } from '../../utils';
 import { BaseHeadlessWidget } from '../base';
-import { ActionWidgetConfig, IActionWidget } from './typing';
 
 class ActionHeadlessWidget<
   CT extends ActionWidgetConfig = ActionWidgetConfig

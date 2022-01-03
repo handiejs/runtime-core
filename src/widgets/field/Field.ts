@@ -1,11 +1,11 @@
 import { DataValue } from '../../vendors/organik';
 
 import { UnknownViewField, ViewFieldDescriptor } from '../../types/input';
+import { FieldWidgetConfig, IFieldWidget } from '../../types/widget/field';
 import { isBoolean, isFunction } from '../../utils';
 import { resolvePlaceholder } from '../../utils/widget';
 
 import { BaseHeadlessWidget } from '../base';
-import { FieldWidgetConfig, IFieldWidget } from './typing';
 
 class FieldHeadlessWidget<
   VT extends DataValue = DataValue,

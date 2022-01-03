@@ -1,4 +1,4 @@
-import { ListViewWidgetConfig } from './typing';
+import { ListViewWidgetConfig } from '../../types/widget/view';
 import { ViewHeadlessWidget } from './View';
 
 class ListViewHeadlessWidget<

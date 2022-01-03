@@ -1,6 +1,8 @@
 import { ValidationResult } from '../../vendors/organik';
 
-interface ViewWidgetConfig {}
+import { BaseWidgetConfig } from './base';
+
+interface ViewWidgetConfig extends BaseWidgetConfig {}
 
 interface ListViewWidgetConfig extends ViewWidgetConfig {
   readonly defaultPageSize?: number;
@@ -15,6 +17,7 @@ interface TableViewWidgetConfig extends ListViewWidgetConfig {
   readonly selectionColumnWidth?: number | string;
   readonly serialNumberColumnWidth?: number | string;
   readonly operationColumnWidth?: number | string;
+  readonly hidePagination?: boolean;
 }
 
 interface ViewWidgetState {

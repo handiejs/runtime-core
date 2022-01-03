@@ -1,4 +1,4 @@
-import { BooleanFieldWidgetConfig } from './typing';
+import { BooleanFieldWidgetConfig } from '../../types/widget/field';
 import { FieldHeadlessWidget } from './Field';
 
 class BooleanFieldHeadlessWidget<
