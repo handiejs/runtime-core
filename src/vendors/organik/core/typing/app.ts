@@ -1,14 +1,16 @@
 interface LocationDescriptor {
-  name?: string;
-  path?: string;
-  hash?: string;
-  query?: Record<string, any>;
-  params?: Record<string, any>;
+  name: string;
+  path: string;
+  rawPath: string;
+  hash: string;
+  query: Record<string, any>;
+  params: Record<string, any>;
 }
 
-type HistoryLocation = string | LocationDescriptor;
+type HistoryLocation = string | Partial<LocationDescriptor>;
 
 interface HistoryHelper {
+  getLocation(): LocationDescriptor;
   back(): void;
   forward(): void;
   go(delta?: number): void;
