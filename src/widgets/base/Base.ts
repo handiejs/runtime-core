@@ -1,4 +1,4 @@
-import { DataValue, ConfigType, ViewContext } from '../../vendors/organik';
+import { DataValue, ConfigType, AppHelper, ViewContext, getAppHelper } from '../../vendors/organik';
 import { retrieveData, getBehaviorByKey } from '../../utils';
 
 type WidgetBehaviors = { [key: string]: any };
@@ -6,6 +6,7 @@ type WidgetBehaviors = { [key: string]: any };
 abstract class BaseHeadlessWidget<WidgetProps, CT extends ConfigType = ConfigType> {
   private readonly __widgetProps: WidgetProps;
   private readonly __viewContext: ViewContext;
+  private readonly __appHelper: AppHelper;
 
   private __behaviorKey!: string;
   private __behaviors!: WidgetBehaviors;
@@ -25,9 +26,14 @@ abstract class BaseHeadlessWidget<WidgetProps, CT extends ConfigType = ConfigTyp
   constructor(props: WidgetProps, viewContext: ViewContext) {
     this.__widgetProps = props;
     this.__viewContext = viewContext;
+    this.__appHelper = getAppHelper();
   }
 
   public abstract getConfig(): CT;
+
+  public getAppHelper(): AppHelper {
+    return this.__appHelper;
+  }
 
   public setBehaviors(keyInTheme: string, options: WidgetBehaviors): void {
     this.__behaviorKey = keyInTheme;
