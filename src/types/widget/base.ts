@@ -1,5 +1,5 @@
 interface BaseWidgetConfig {
-  className?: string;
+  readonly className?: string;
 }
 
 interface BaseWidgetState {}
