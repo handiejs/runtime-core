@@ -15,7 +15,7 @@ interface UnknownField extends UnsureTypeField {
 }
 
 interface NumberField extends UnknownField {
-  dataType: 'int' | 'float';
+  dataType: 'integer' | 'float';
   max?: number;
   min?: number;
 }

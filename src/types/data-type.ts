@@ -1,6 +1,6 @@
 enum BuiltInDataType {
   Boolean = 'boolean',
-  Integer = 'int',
+  Integer = 'integer',
   Float = 'float',
   String = 'string',
   Text = 'text',
