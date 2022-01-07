@@ -158,7 +158,7 @@ class ObjectViewContext<
   }
 
   public getOne(
-    params: string | number,
+    params: string | number | Record<string, any>,
     success?: ResponseSuccess,
     fail?: ResponseFail,
   ): Promise<ResponseResult> {

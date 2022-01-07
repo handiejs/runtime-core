@@ -26,16 +26,17 @@ interface ViewContext<VT = any, CT = ConfigType>
     ValueContext<VT> {
   getId(): string;
   getModuleContext: () => ModuleContext;
-  getView: () => ViewDescriptor<CT>;
-  getFields: () => ViewFieldDescriptor[];
-  getActions: () => ActionDescriptor[];
-  getActionsByContextType: (contextType: ActionContextType) => ActionDescriptor[];
-  getActionsAuthority: () => string | ActionAuthorityGetter | undefined;
-  getConfig: () => CT;
-  getDataSource: () => VT;
-  setDataSource: (data: VT) => void;
-  getBusy: () => boolean;
-  setBusy: (busy: boolean) => void;
+  getOpener(): ListViewContext | ObjectViewContext | undefined; // eslint-disable-line no-use-before-define
+  getView(): ViewDescriptor<CT>;
+  getFields(): ViewFieldDescriptor[];
+  getActions(): ActionDescriptor[];
+  getActionsByContextType(contextType: ActionContextType): ActionDescriptor[];
+  getActionsAuthority(): string | ActionAuthorityGetter | undefined;
+  getConfig(): CT;
+  getDataSource(): VT;
+  setDataSource(data: VT): void;
+  getBusy(): boolean;
+  setBusy(busy: boolean): void;
 }
 
 interface InternalListViewContext<Child, VT = any, CT = ConfigType> extends ViewContext<VT, CT> {
@@ -61,7 +62,7 @@ interface InternalObjectViewContext<Parent, VT = any, CT = ConfigType> extends V
   setFieldValue: <FV>(name: string, value: FV) => void;
   setFieldChecker: (name: string, checker: ValueChecker) => void;
   isModified: () => boolean;
-  getOne: ShorthandRequest<string | number>;
+  getOne: ShorthandRequest<string | number | Record<string, any>>;
   insert: ShorthandRequest;
   update: ShorthandRequest;
 }
@@ -84,7 +85,9 @@ interface ViewContextDescriptor<
   VT extends DataValue = DataValue,
   CT extends ConfigType = ConfigType
 > extends ViewDescriptor<CT>,
-    ValueContextDescriptor<VT> {}
+    ValueContextDescriptor<VT> {
+  opener?: ListViewContext<VT, CT> | ObjectViewContext<VT, CT>;
+}
 
 interface ListShorthandRequest {
   getList?: string;

@@ -14,6 +14,8 @@ import {
   ValueContextDescriptor,
   ViewContextDescriptor,
   ViewContext as IViewContext,
+  ListViewContext as IListViewContext,
+  ObjectViewContext as IObjectViewContext,
   resolveAction,
   setViewContext,
   resolveFields,
@@ -21,6 +23,8 @@ import {
 } from '../../core';
 import { resolveInput } from '../../core/input';
 import { ValueContext } from '../value';
+
+type ViewContextOpener<VT, CT> = IListViewContext<VT, CT> | IObjectViewContext<VT, CT> | undefined;
 
 class ViewContext<ValueType extends DataValue = DataValue, Config extends ConfigType = ConfigType>
   extends ValueContext<ValueType>
@@ -34,6 +38,8 @@ class ViewContext<ValueType extends DataValue = DataValue, Config extends Config
   private readonly fields: ViewFieldDescriptor[];
 
   private readonly actions: ClientAction[];
+
+  private readonly opener: ViewContextOpener<ValueType, Config>;
 
   protected readonly actionContextGroups: ActionGroupByContext;
 
@@ -51,6 +57,7 @@ class ViewContext<ValueType extends DataValue = DataValue, Config extends Config
       (options.fields || []).map(field => resolveInput(field)),
       moduleContext.getModel(),
     );
+    this.opener = options.opener;
 
     const actions = (options.actions || [])
       .map(resolveAction)
@@ -81,6 +88,15 @@ class ViewContext<ValueType extends DataValue = DataValue, Config extends Config
 
   public getModuleContext(): ModuleContext {
     return this.moduleContext;
+  }
+
+  /**
+   * Get opener opened this view (pop-up view)
+   *
+   * @returns the opener that open this view
+   */
+  public getOpener(): ViewContextOpener<ValueType, Config> {
+    return this.opener;
   }
 
   public getComponents(): Record<string, ComponentCtor> {
