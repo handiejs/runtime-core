@@ -8,6 +8,16 @@ function resolveUrl(location: HistoryLocation): string {
 
 let appHelper: AppHelper = {
   history: {
+    getLocation() {
+      return {
+        name: '',
+        path: location.pathname,
+        rawPath: location.pathname,
+        hash: location.hash,
+        query: {},
+        params: {},
+      };
+    },
     back: window.history.back,
     forward: window.history.forward,
     go: window.history.go,
