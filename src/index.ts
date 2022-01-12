@@ -10,8 +10,10 @@ import {
 } from './types/view';
 
 export { EventWithNamespace, EventHandler, EventHandlers } from '@ntks/event-emitter';
-export * from './vendors/organik';
+export { normalizeClassName } from 'petals-ui/dist/basic';
 export { registerAndLoadIconProviders } from 'petals-ui/dist/icon';
+
+export * from './vendors/organik';
 
 export * from './types';
 export * from './utils';
