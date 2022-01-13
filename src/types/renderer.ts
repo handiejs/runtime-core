@@ -23,6 +23,7 @@ interface FormRendererProps {
   readonly fields: ViewFieldDescriptor[];
   readonly value: Record<string, any>;
   readonly config: ConfigType;
+  readonly behavior?: Record<string, any>;
   readonly readonly?: boolean;
   readonly validation?: Record<string, ValidationResult>;
   readonly className?: any;
