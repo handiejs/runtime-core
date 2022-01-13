@@ -1,4 +1,5 @@
 import { isString, isNumeric, isFunction, includes } from '@ntks/toolbox';
+import { FlexBreakpointListProp } from 'petals-ui/dist/basic';
 
 import {
   ComponentRenderer,
@@ -20,6 +21,9 @@ import {
 } from '../types/input';
 import { cacheDynamicEnumOptions, getCachedEnumOptions } from '../utils/input';
 
+const BREAKPOINT_PART = '(xs|sm|md|lg|xl)-[1-9]{1,2}';
+const fullRegExp = new RegExp(`^([?${BREAKPOINT_PART}(/${BREAKPOINT_PART}){0,}]?,?)+$`);
+
 function resolveWidgetCtor(
   moduleContext: ModuleContext,
   widget: ComponentRenderer | undefined,
@@ -38,6 +42,19 @@ function resolveWidgetCtor(
   return getWidget(widgetNameFromRenderTypeResolver());
 }
 
+function resolveBreakpoints(cols: string): FlexBreakpointListProp[] {
+  return cols.split(',').map(col =>
+    col
+      .replace(/(\[|\])/g, '')
+      .split('/')
+      .reduce((prev, breakpoint) => {
+        const [size, span] = breakpoint.split('-');
+
+        return { ...prev, [size]: Number(span) };
+      }, {}),
+  );
+}
+
 function renderFormFieldNodes<
   DescriptorType extends InputDescriptor & { hidden?: boolean },
   NodeType
@@ -45,32 +62,33 @@ function renderFormFieldNodes<
   descriptors: DescriptorType[],
   arrangement: string | undefined,
   renderChild: (descriptor: DescriptorType) => NodeType,
-  renderRow: (descriptors: DescriptorType[], fakeIndex: number) => NodeType,
+  renderRow: (descriptors: DescriptorType[], cols: FlexBreakpointListProp[] | number) => NodeType,
 ): NodeType[] {
   const formFieldNodes: NodeType[] = [];
-  const rows = (arrangement || '').split('|') as any[];
+  const rows = (arrangement || '').split('|');
 
-  let needLayout = false;
-
-  if (rows.length > 0) {
-    const availableRows: number[] = [];
-
-    rows.forEach(row => {
-      if (isNumeric(row) && Number(row) > 0) {
-        availableRows.push(row);
-      }
-    });
-
-    needLayout = availableRows.length === rows.length;
-  }
+  const needLayout =
+    rows.length > 0 &&
+    rows.filter(row => (isNumeric(row) && Number(row) > 0) || fullRegExp.test(row)).length ===
+      rows.length;
 
   if (needLayout) {
     const remainedFilters = descriptors.filter(({ hidden }) => hidden !== true);
 
     do {
-      formFieldNodes.push(
-        renderRow(remainedFilters.splice(0, rows.shift() * 1), remainedFilters.length),
-      );
+      const cols = rows.shift()!;
+
+      let breakpoints: FlexBreakpointListProp[] = [];
+      let count: number;
+
+      if (isNumeric(cols)) {
+        count = Number(cols);
+      } else {
+        breakpoints = resolveBreakpoints(cols);
+        count = breakpoints.length;
+      }
+
+      formFieldNodes.push(renderRow(remainedFilters.splice(0, count), breakpoints));
     } while (remainedFilters.length > 0 && rows.length > 0);
 
     if (remainedFilters.length > 0) {
@@ -85,6 +103,52 @@ function renderFormFieldNodes<
   }
 
   return formFieldNodes;
+}
+
+function renderFormChildren<
+  DescriptorType extends InputDescriptor & { hidden?: boolean },
+  NodeType
+>(
+  descriptors: DescriptorType[],
+  arrangement: string | undefined,
+  renderGroup: (title: string, formFieldNodes: NodeType[]) => NodeType,
+  renderChild: (descriptor: DescriptorType) => NodeType,
+  renderRow: (descriptors: DescriptorType[], cols: FlexBreakpointListProp[] | number) => NodeType,
+): NodeType[] {
+  const groups = (arrangement || '').match(/\(([^()]+)\)/g);
+
+  if (!groups) {
+    return renderFormFieldNodes(descriptors, arrangement, renderChild, renderRow);
+  }
+
+  let startIndex = 0;
+  let endIndex = 0;
+
+  return groups
+    .map(group => group.replace(/\(|\)/g, ''))
+    .filter(group => !!group)
+    .map(group => {
+      const grouped = group.split(':');
+      const count = grouped[1]
+        .split('|')
+        .reduce((prev, row) => (isNumeric(row) ? Number(row) : row.split(',').length) + prev, 0);
+
+      endIndex = startIndex + count;
+
+      const fields = renderGroup(
+        grouped[0],
+        renderFormFieldNodes(
+          descriptors.slice(startIndex, endIndex),
+          grouped[1],
+          renderChild,
+          renderRow,
+        ),
+      );
+
+      startIndex = endIndex;
+
+      return fields;
+    });
 }
 
 function resolvePlaceholder(
@@ -140,4 +204,4 @@ function resolveEnumOptions(
   }
 }
 
-export { resolveWidgetCtor, renderFormFieldNodes, resolvePlaceholder, resolveEnumOptions };
+export { resolveWidgetCtor, renderFormChildren, resolvePlaceholder, resolveEnumOptions };

@@ -10,7 +10,7 @@ import {
 } from './types/view';
 
 export { EventWithNamespace, EventHandler, EventHandlers } from '@ntks/event-emitter';
-export { normalizeClassName } from 'petals-ui/dist/basic';
+export { FlexBreakpointListProp as GridBreakpoint, normalizeClassName } from 'petals-ui/dist/basic';
 export { registerAndLoadIconProviders } from 'petals-ui/dist/icon';
 
 export * from './vendors/organik';
