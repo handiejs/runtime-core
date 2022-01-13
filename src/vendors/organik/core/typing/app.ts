@@ -1,7 +1,6 @@
 interface LocationDescriptor {
   name: string;
   path: string;
-  rawPath: string;
   hash: string;
   query: Record<string, any>;
   params: Record<string, any>;
@@ -9,8 +8,13 @@ interface LocationDescriptor {
 
 type HistoryLocation = string | Partial<LocationDescriptor>;
 
+interface LocationRoute extends LocationDescriptor {
+  rawPath: string;
+  ancestors: Pick<LocationRoute, 'name'>[];
+}
+
 interface HistoryHelper {
-  getLocation(): LocationDescriptor;
+  getLocation(): LocationRoute;
   back(): void;
   forward(): void;
   go(delta?: number): void;
@@ -24,4 +28,4 @@ interface AppHelper {
   confirm(message: string, ...args: any[]): void;
 }
 
-export { LocationDescriptor, HistoryLocation, AppHelper };
+export { LocationDescriptor, HistoryLocation, LocationRoute, AppHelper };
