@@ -16,6 +16,7 @@ let appHelper: AppHelper = {
         hash: location.hash,
         query: {},
         params: {},
+        ancestors: [],
       };
     },
     back: window.history.back,
