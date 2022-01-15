@@ -36,6 +36,8 @@ interface ViewCommonBehaviors {
   objectViewFormControlLabelWidth?: number | string; // 表单控件文本标签宽度
   objectViewFormControlSize?: 'large' | 'medium' | 'small';
   objectViewShowValidationMessage?: boolean;
+  objectViewActionBarOutside?: boolean;
+  objectViewActionBarAlignment?: 'left' | 'center' | 'right';
   listViewPageSizes?: number[];
   listViewDefaultPageSize?: number;
 }

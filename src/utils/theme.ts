@@ -35,6 +35,8 @@ let defaultTheme: ThemeOptions = {
         objectViewFormControlLabelWidth: 200,
         objectViewFormControlSize: 'medium',
         objectViewShowValidationMessage: true,
+        objectViewActionBarOutside: false,
+        objectViewActionBarAlignment: 'left',
         listViewPageSizes: [10, 20, 50, 100],
         listViewDefaultPageSize: 20,
       },
