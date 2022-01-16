@@ -19,13 +19,25 @@ interface ResolvedEnumFieldOption extends Omit<EnumFieldOption, 'available'> {
   disabled: boolean;
 }
 
-interface EnumFieldWidgetState extends BaseWidgetState {
+interface FieldWidgetState extends BaseWidgetState {
+  disabled: boolean;
+}
+
+interface BooleanFieldWidgetState extends FieldWidgetState {}
+
+interface IntegerFieldWidgetState extends FieldWidgetState {}
+
+interface StringFieldWidgetState extends FieldWidgetState {}
+
+interface TextFieldWidgetState extends FieldWidgetState {}
+
+interface EnumFieldWidgetState extends FieldWidgetState {
   internalOptions: EnumFieldOption[];
   options: ResolvedEnumFieldOption[];
   optionMap: Record<string, EnumFieldOption>;
 }
 
-interface RelationFieldWidgetState<ValueType> extends BaseWidgetState {
+interface RelationFieldWidgetState<ValueType> extends FieldWidgetState {
   internalValue: ValueType;
 }
 
@@ -40,6 +52,11 @@ export {
   BooleanFieldWidgetConfig,
   EnumFieldWidgetConfig,
   ResolvedEnumFieldOption,
+  FieldWidgetState,
+  BooleanFieldWidgetState,
+  IntegerFieldWidgetState,
+  StringFieldWidgetState,
+  TextFieldWidgetState,
   EnumFieldWidgetState,
   RelationFieldWidgetState,
   IFieldWidget,

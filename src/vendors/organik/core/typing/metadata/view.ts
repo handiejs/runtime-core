@@ -12,6 +12,7 @@ interface ViewFieldDescriptor<
     InputDescriptor<RT, CT> {
   required?: boolean | ContextExpression;
   readonly?: boolean | ContextExpression;
+  disabled?: boolean | ContextExpression;
   hidden?: boolean;
 }
 
