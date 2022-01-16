@@ -1,6 +1,7 @@
-import { isString, isArray, isPlainObject, clone } from '@ntks/toolbox';
+import { isString, isArray, isPlainObject, hasOwnProp, clone } from '@ntks/toolbox';
 
 import {
+  DataValue,
   DataType,
   ValidationResult,
   ValueChecker,
@@ -24,7 +25,13 @@ function resolveInput(refOrDescriptor: string | InputDescriptor): InputDescripto
     : (refOrDescriptor as InputDescriptor);
 }
 
-function getDefaultValue({ dataType }: InputDescriptor): any {
+function getDefaultValue(descriptor: InputDescriptor): DataValue {
+  if (hasOwnProp('defaultValue', descriptor)) {
+    return descriptor.defaultValue;
+  }
+
+  const { dataType } = descriptor;
+
   if (!dataType) {
     return '';
   }

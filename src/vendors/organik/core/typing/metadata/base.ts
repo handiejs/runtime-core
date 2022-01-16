@@ -1,4 +1,5 @@
 import { ComponentCtor } from '../component';
+import { DataValue } from '../value';
 import { DataType } from '../data-type';
 import { RenderType } from '../render-type';
 
@@ -13,6 +14,7 @@ interface InputDescriptor<WT extends any = ComponentRenderer, CT extends ConfigT
   dataType?: DataType;
   label?: string;
   required?: boolean | ContextExpression;
+  defaultValue?: DataValue;
   renderType?: RenderType;
   widget?: WT;
   config?: CT;
