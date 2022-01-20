@@ -1,5 +1,6 @@
 export * from '../vendors/toolbox';
 
+export * from './date';
 export * from './is';
 export * from './input';
 export * from './theme';

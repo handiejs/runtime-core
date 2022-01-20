@@ -1,7 +1,15 @@
 import { DataValue, DataTypeDescriptor, registerDataType } from '../vendors/organik';
 
 import { BuiltInDataType } from '../types/data-type';
-import { isBoolean, isNumber, isInteger, isString, isArray, isPlainObject } from '../utils';
+import {
+  isBoolean,
+  isNumber,
+  isInteger,
+  isString,
+  isArray,
+  isPlainObject,
+  isDateValue,
+} from '../utils';
 
 type PartialDataTypeDescriptor = Omit<DataTypeDescriptor, 'name'>;
 
@@ -36,7 +44,11 @@ function isEnumValue(value: DataValue): boolean {
     validator: value => isArray(value) && (value as DataValue[]).every(isEnumValue),
     defaultValueGetter: () => [],
   },
-  { name: BuiltInDataType.Date, validator: () => true, defaultValueGetter: () => '' },
+  {
+    name: BuiltInDataType.Date,
+    validator: value => value === '' || isDateValue(value),
+    defaultValueGetter: () => '',
+  },
   { name: BuiltInDataType.OneToOne, ...objectDescriptor },
   { name: BuiltInDataType.OneToMany, ...listDescriptor },
   { name: BuiltInDataType.ManyToMany, ...listDescriptor },
