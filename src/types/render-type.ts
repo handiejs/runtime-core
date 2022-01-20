@@ -14,6 +14,8 @@ type TextInputRenderType = 'input' | 'textarea';
 
 type EnumInputRenderType = 'select' | 'radio';
 
+type DateInputRenderType = 'date';
+
 type OneToOneInputRenderType = ObjectViewRenderType;
 
 type OneToManyInputRenderType = 'select' | ListViewRenderType;

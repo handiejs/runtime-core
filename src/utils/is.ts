@@ -1,4 +1,4 @@
-import { includes } from '@ntks/toolbox';
+import { includes } from '../vendors/toolbox';
 
 import { BuiltInDataType } from '../types/data-type';
 import { ViewFieldDescriptor } from '../types/input';

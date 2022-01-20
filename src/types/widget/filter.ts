@@ -5,10 +5,38 @@ interface FilterWidgetConfig extends BaseWidgetConfig {
   readonly showHintAsPlaceholder?: boolean;
 }
 
-interface EnumFilterWidgetState extends BaseWidgetState {
+interface BooleanFilterWidgetConfig extends FilterWidgetConfig {}
+
+interface IntegerFilterWidgetConfig extends FilterWidgetConfig {}
+
+interface FloatFilterWidgetConfig extends FilterWidgetConfig {}
+
+interface StringFilterWidgetConfig extends FilterWidgetConfig {}
+
+interface TextFilterWidgetConfig extends FilterWidgetConfig {}
+
+interface EnumFilterWidgetConfig extends FilterWidgetConfig {}
+
+interface DateFilterWidgetConfig extends FilterWidgetConfig {}
+
+interface FilterWidgetState extends BaseWidgetState {}
+
+interface BooleanFilterWidgetState extends FilterWidgetState {}
+
+interface IntegerFilterWidgetState extends FilterWidgetState {}
+
+interface FloatFilterWidgetState extends FilterWidgetState {}
+
+interface StringFilterWidgetState extends FilterWidgetState {}
+
+interface TextFilterWidgetState extends FilterWidgetState {}
+
+interface EnumFilterWidgetState extends FilterWidgetState {
   options: EnumFieldOption[];
   optionMap: Record<string, EnumFieldOption>;
 }
+
+interface DateFilterWidgetState extends FilterWidgetState {}
 
 interface IFilterWidget<ValueType> {
   readonly filter: FilterDescriptor;
@@ -16,4 +44,22 @@ interface IFilterWidget<ValueType> {
   readonly onChange: (value: ValueType) => void;
 }
 
-export { FilterWidgetConfig, EnumFilterWidgetState, IFilterWidget };
+export {
+  FilterWidgetConfig,
+  BooleanFilterWidgetConfig,
+  IntegerFilterWidgetConfig,
+  FloatFilterWidgetConfig,
+  StringFilterWidgetConfig,
+  TextFilterWidgetConfig,
+  EnumFilterWidgetConfig,
+  DateFilterWidgetConfig,
+  FilterWidgetState,
+  BooleanFilterWidgetState,
+  IntegerFilterWidgetState,
+  FloatFilterWidgetState,
+  StringFilterWidgetState,
+  TextFilterWidgetState,
+  EnumFilterWidgetState,
+  DateFilterWidgetState,
+  IFilterWidget,
+};

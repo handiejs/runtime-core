@@ -1,14 +1,14 @@
 import { ViewContext } from '../../vendors/organik';
 
 import { EnumFieldOption, EnumField } from '../../types/input';
-import { FilterWidgetConfig } from '../../types/widget/filter';
+import { EnumFilterWidgetConfig } from '../../types/widget/filter';
 import { resolveEnumOptions } from '../../utils/widget';
 
 import { FilterHeadlessWidget } from './Filter';
 
 class EnumFilterHeadlessWidget<
   VT,
-  CT extends FilterWidgetConfig = FilterWidgetConfig
+  CT extends EnumFilterWidgetConfig = EnumFilterWidgetConfig
 > extends FilterHeadlessWidget<VT, CT, EnumField> {
   public initOptions(
     viewContext: ViewContext,

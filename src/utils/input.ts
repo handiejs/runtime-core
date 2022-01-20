@@ -1,4 +1,4 @@
-import { isArray, isFunction } from '@ntks/toolbox';
+import { isArray, isFunction } from '../vendors/toolbox';
 
 import {
   EnumFieldOption,

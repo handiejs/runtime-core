@@ -11,6 +11,14 @@ interface BooleanFieldWidgetConfig extends FieldWidgetConfig {
   readonly negativeFirst?: boolean;
 }
 
+interface IntegerFieldWidgetConfig extends FieldWidgetConfig {}
+
+interface FloatFieldWidgetConfig extends FieldWidgetConfig {}
+
+interface StringFieldWidgetConfig extends FieldWidgetConfig {}
+
+interface TextFieldWidgetConfig extends FieldWidgetConfig {}
+
 interface EnumFieldWidgetConfig extends FieldWidgetConfig {
   readonly showUnavailableOption?: boolean;
 }
@@ -19,6 +27,8 @@ interface ResolvedEnumFieldOption extends Omit<EnumFieldOption, 'available'> {
   disabled: boolean;
 }
 
+interface DateFieldWidgetConfig extends FieldWidgetConfig {}
+
 interface FieldWidgetState extends BaseWidgetState {
   disabled: boolean;
 }
@@ -26,6 +36,8 @@ interface FieldWidgetState extends BaseWidgetState {
 interface BooleanFieldWidgetState extends FieldWidgetState {}
 
 interface IntegerFieldWidgetState extends FieldWidgetState {}
+
+interface FloatFieldWidgetState extends FieldWidgetState {}
 
 interface StringFieldWidgetState extends FieldWidgetState {}
 
@@ -36,6 +48,8 @@ interface EnumFieldWidgetState extends FieldWidgetState {
   options: ResolvedEnumFieldOption[];
   optionMap: Record<string, EnumFieldOption>;
 }
+
+interface DateFieldWidgetState extends FieldWidgetState {}
 
 interface RelationFieldWidgetState<ValueType> extends FieldWidgetState {
   internalValue: ValueType;
@@ -50,14 +64,21 @@ interface IFieldWidget<ValueType> {
 export {
   FieldWidgetConfig,
   BooleanFieldWidgetConfig,
+  IntegerFieldWidgetConfig,
+  FloatFieldWidgetConfig,
+  StringFieldWidgetConfig,
+  TextFieldWidgetConfig,
   EnumFieldWidgetConfig,
   ResolvedEnumFieldOption,
+  DateFieldWidgetConfig,
   FieldWidgetState,
   BooleanFieldWidgetState,
   IntegerFieldWidgetState,
+  FloatFieldWidgetState,
   StringFieldWidgetState,
   TextFieldWidgetState,
   EnumFieldWidgetState,
+  DateFieldWidgetState,
   RelationFieldWidgetState,
   IFieldWidget,
 };

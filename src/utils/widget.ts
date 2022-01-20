@@ -1,6 +1,6 @@
-import { isString, isNumeric, isFunction, includes } from '@ntks/toolbox';
 import { FlexBreakpointListProp } from 'petals-ui/dist/basic';
 
+import { isString, isNumeric, isFunction, includes } from '../vendors/toolbox';
 import {
   ComponentRenderer,
   ComponentCtor,

@@ -1,4 +1,4 @@
-import { retrieveData, mixin } from '@ntks/toolbox';
+import { retrieveData, mixin } from '../vendors/toolbox';
 
 import { ThemeStyle, ThemeBehavior, ThemeOptions } from '../types';
 

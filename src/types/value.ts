@@ -4,4 +4,6 @@ type ObjectValue = Record<string, any>;
 
 type ListValue = DataValue[];
 
-export { ObjectValue, ListValue };
+type DateValue = Date | string | number;
+
+export { ObjectValue, ListValue, DateValue };

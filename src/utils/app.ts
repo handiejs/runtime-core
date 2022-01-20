@@ -1,6 +1,6 @@
-import { isFunction } from '@ntks/toolbox';
 import { registerAndLoadIconProviders } from 'petals-ui/dist/icon';
 
+import { isFunction } from '../vendors/toolbox';
 import {
   registerComponent,
   registerAppHelper,

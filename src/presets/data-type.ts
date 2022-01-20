@@ -1,14 +1,9 @@
 import { DataValue, DataTypeDescriptor, registerDataType } from '../vendors/organik';
 
 import { BuiltInDataType } from '../types/data-type';
-import { isBoolean, isNumber, isString, isArray, isPlainObject } from '../utils';
+import { isBoolean, isNumber, isInteger, isString, isArray, isPlainObject } from '../utils';
 
 type PartialDataTypeDescriptor = Omit<DataTypeDescriptor, 'name'>;
-
-const numberDescriptor: PartialDataTypeDescriptor = {
-  validator: isNumber,
-  defaultValueGetter: () => 0,
-};
 
 const stringDescriptor: PartialDataTypeDescriptor = {
   validator: isString,
@@ -31,8 +26,8 @@ function isEnumValue(value: DataValue): boolean {
 
 ([
   { name: BuiltInDataType.Boolean, validator: isBoolean, defaultValueGetter: () => false },
-  { name: BuiltInDataType.Integer, ...numberDescriptor },
-  { name: BuiltInDataType.Float, ...numberDescriptor },
+  { name: BuiltInDataType.Integer, validator: isInteger, defaultValueGetter: () => 0 },
+  { name: BuiltInDataType.Float, validator: isNumber, defaultValueGetter: () => 0 },
   { name: BuiltInDataType.String, ...stringDescriptor },
   { name: BuiltInDataType.Text, ...stringDescriptor },
   { name: BuiltInDataType.Enum, validator: isEnumValue, defaultValueGetter: () => '' },
@@ -41,6 +36,7 @@ function isEnumValue(value: DataValue): boolean {
     validator: value => isArray(value) && (value as DataValue[]).every(isEnumValue),
     defaultValueGetter: () => [],
   },
+  { name: BuiltInDataType.Date, validator: () => true, defaultValueGetter: () => '' },
   { name: BuiltInDataType.OneToOne, ...objectDescriptor },
   { name: BuiltInDataType.OneToMany, ...listDescriptor },
   { name: BuiltInDataType.ManyToMany, ...listDescriptor },

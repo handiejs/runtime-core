@@ -49,6 +49,10 @@ interface MultiEnumField extends UnknownField {
   options: EnumFieldOption[] | EnumFieldOptionGetter;
 }
 
+interface DateField extends UnknownField {
+  dataType: 'date';
+}
+
 type RelationFieldType = 'o2o' | 'o2m' | 'm2m' | 'm2o';
 
 interface StaticRelationField extends UnknownField {
@@ -76,6 +80,7 @@ type FieldDescriptor =
   | StringField
   | EnumField
   | MultiEnumField
+  | DateField
   | RelationField;
 
 // Filters
@@ -95,6 +100,8 @@ type StringFilter = UnknownFilter & Filterize<StringField>;
 type EnumFilter = UnknownFilter & Filterize<EnumField>;
 type MultiEnumFilter = UnknownFilter & Filterize<MultiEnumField>;
 
+type DateFilter = UnknownFilter & Filterize<DateField>;
+
 type StaticRelationFilter = UnknownFilter & Filterize<StaticRelationField>;
 type DynamicRelationFilter = UnknownFilter & Filterize<DynamicRelationField>;
 type RelationFilter = StaticRelationFilter | DynamicRelationFilter;
@@ -105,6 +112,7 @@ type FilterDescriptor =
   | StringFilter
   | EnumFilter
   | MultiEnumFilter
+  | DateFilter
   | RelationFilter;
 
 // View fields
@@ -124,6 +132,8 @@ type StringViewField = UnknownViewField & StringField;
 type EnumViewField = UnknownViewField & EnumField;
 type MultiEnumViewField = UnknownViewField & MultiEnumField;
 
+type DateViewField = UnknownViewField & DateField;
+
 type StaticRelationViewField = UnknownViewField & StaticRelationField;
 type DynamicRelationViewFIeld = UnknownViewField & DynamicRelationField;
 type RelationViewField = StaticRelationViewField | DynamicRelationViewFIeld;
@@ -134,6 +144,7 @@ type ViewFieldDescriptor =
   | StringViewField
   | EnumViewField
   | MultiEnumViewField
+  | DateViewField
   | RelationViewField;
 
 export {

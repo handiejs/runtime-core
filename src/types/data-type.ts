@@ -6,6 +6,7 @@ enum BuiltInDataType {
   Text = 'text',
   Enum = 'enum',
   MultiEnum = 'multi-enum',
+  Date = 'date',
   OneToOne = 'o2o',
   OneToMany = 'o2m',
   ManyToMany = 'm2m',
