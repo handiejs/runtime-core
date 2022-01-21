@@ -4,22 +4,25 @@ import { BuiltInDataType } from '../types/data-type';
 import { ViewFieldDescriptor, FilterDescriptor } from '../types/input';
 import { getBehaviorByKey } from './theme';
 
-function resolveFieldRenderType({ renderType, dataType = '' }: ViewFieldDescriptor): string {
-  const dataTypeToRenderTypeMapOfField: Record<DataType, RenderType> = {
+function getDefaultRenderTypeMapOfField(): Record<DataType, RenderType> {
+  return {
     [BuiltInDataType.Boolean]: getBehaviorByKey('common.field.booleanFieldRenderType'),
-    [BuiltInDataType.String]: 'input',
-    [BuiltInDataType.Text]: 'textarea',
     [BuiltInDataType.Integer]: 'number',
     [BuiltInDataType.Float]: 'number',
+    [BuiltInDataType.String]: 'input',
+    [BuiltInDataType.Text]: 'textarea',
     [BuiltInDataType.Enum]: getBehaviorByKey('common.field.enumFieldRenderType'),
     [BuiltInDataType.MultiEnum]: 'select',
+    [BuiltInDataType.Date]: 'date-picker',
     [BuiltInDataType.OneToOne]: 'select',
     [BuiltInDataType.OneToMany]: 'select',
     [BuiltInDataType.ManyToMany]: 'select',
     [BuiltInDataType.ManyToOne]: 'select',
   };
+}
 
-  return renderType || dataTypeToRenderTypeMapOfField[dataType] || '';
+function resolveFieldRenderType({ renderType, dataType = '' }: ViewFieldDescriptor): string {
+  return renderType || getDefaultRenderTypeMapOfField()[dataType] || '';
 }
 
 const dataTypeToRenderTypeMapOfFilter: Record<DataType, RenderType> = {

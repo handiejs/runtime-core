@@ -1,11 +1,11 @@
-import dayjs from 'dayjs';
+import dayjs, { ConfigType, OptionType, Dayjs } from 'dayjs';
 
 function createMoment(
-  date?: dayjs.ConfigType,
-  format?: dayjs.OptionType,
+  date?: ConfigType,
+  format?: OptionType,
   strictOrLocale?: boolean | string,
   strict?: boolean,
-): dayjs.Dayjs {
+): Dayjs {
   return dayjs(date, format, strictOrLocale as any, strict);
 }
 

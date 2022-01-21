@@ -161,10 +161,10 @@ function resolvePlaceholder(
   if (fieldOrFilter.dataType) {
     defaultPlaceholder = `${
       includes(fieldOrFilter.dataType, [
-        BuiltInDataType.String,
-        BuiltInDataType.Text,
         BuiltInDataType.Integer,
         BuiltInDataType.Float,
+        BuiltInDataType.String,
+        BuiltInDataType.Text,
       ])
         ? '请输入'
         : '请选择'
