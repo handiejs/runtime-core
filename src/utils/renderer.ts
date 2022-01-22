@@ -13,7 +13,7 @@ function getDefaultRenderTypeMapOfField(): Record<DataType, RenderType> {
     [BuiltInDataType.Text]: 'textarea',
     [BuiltInDataType.Enum]: getBehaviorByKey('common.field.enumFieldRenderType'),
     [BuiltInDataType.MultiEnum]: 'select',
-    [BuiltInDataType.Date]: 'date-picker',
+    [BuiltInDataType.Date]: getBehaviorByKey('common.field.dateFieldRenderType'),
     [BuiltInDataType.OneToOne]: 'select',
     [BuiltInDataType.OneToMany]: 'select',
     [BuiltInDataType.ManyToMany]: 'select',

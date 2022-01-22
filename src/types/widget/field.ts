@@ -29,7 +29,7 @@ interface ResolvedEnumFieldOption extends Omit<EnumFieldOption, 'available'> {
 
 interface DateFieldWidgetConfig extends FieldWidgetConfig {
   readonly format?: string;
-  readonly showToday?: boolean;
+  readonly showNow?: boolean;
   readonly disableDate?: (date: Date) => boolean;
   readonly separator?: string;
   readonly fromField?: string;

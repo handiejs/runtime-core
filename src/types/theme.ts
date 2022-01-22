@@ -1,6 +1,11 @@
 import { IconProviders } from 'petals-ui/dist/icon';
 
-import { ActionRenderType, BooleanInputRenderType, EnumInputRenderType } from './render-type';
+import {
+  ActionRenderType,
+  BooleanInputRenderType,
+  EnumInputRenderType,
+  DateInputRenderType,
+} from './render-type';
 
 interface ActionCommonBehaviors {
   renderType?: ActionRenderType;
@@ -23,6 +28,7 @@ interface SearchCommonBehaviors {
 interface FieldCommonBehaviors {
   booleanFieldRenderType?: BooleanInputRenderType; // 布尔字段默认部件
   enumFieldRenderType?: EnumInputRenderType;
+  dateFieldRenderType?: DateInputRenderType;
   showUnavailableOption?: boolean;
   showHintAsPlaceholder?: boolean; // 输入提示作为表单控件占位符显示
   showHintAtFormItem?: boolean; // 输入提示显示在表单条目中

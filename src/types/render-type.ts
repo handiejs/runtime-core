@@ -14,7 +14,7 @@ type TextInputRenderType = 'input' | 'textarea';
 
 type EnumInputRenderType = 'select' | 'radio';
 
-type DateInputRenderType = 'date';
+type DateInputRenderType = 'date' | 'date-range' | 'date-time' | 'date-time-range';
 
 type OneToOneInputRenderType = ObjectViewRenderType;
 
@@ -35,6 +35,7 @@ type InputRenderType =
   | StringInputRenderType
   | TextInputRenderType
   | EnumInputRenderType
+  | DateInputRenderType
   | RelationInputRenderType;
 
 export {
@@ -46,6 +47,7 @@ export {
   StringInputRenderType,
   TextInputRenderType,
   EnumInputRenderType,
+  DateInputRenderType,
   OneToOneInputRenderType,
   OneToManyInputRenderType,
   ManyToManyInputRenderType,

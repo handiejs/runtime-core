@@ -23,6 +23,7 @@ let defaultTheme: ThemeOptions = {
       field: {
         booleanFieldRenderType: 'radio',
         enumFieldRenderType: 'radio',
+        dateFieldRenderType: 'date',
         showUnavailableOption: false,
         showHintAsPlaceholder: true,
         showHintAtFormItem: false,
