@@ -16,7 +16,7 @@ class AdminLayoutHeadlessWidget<
   public getMenuFlags(): { active: string; open: string[] } {
     const { name, ancestors } = this.getAppHelper().history.getLocation();
 
-    return { active: name, open: ancestors.map(a => a.name) };
+    return { active: name, open: ancestors.length > 0 ? ancestors.map(a => a.name) : [name] };
   }
 }
 
