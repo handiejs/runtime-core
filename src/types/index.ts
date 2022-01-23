@@ -1,4 +1,5 @@
 export * from './value';
+export * from './render-type';
 export { EnumFieldOption, EnumFieldOptionGetter } from './input';
 export {
   ColumnContext,
