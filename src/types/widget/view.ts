@@ -18,6 +18,7 @@ interface TableViewWidgetConfig extends ListViewWidgetConfig {
   readonly selectionColumnWidth?: number | string;
   readonly serialNumberColumnWidth?: number | string;
   readonly operationColumnWidth?: number | string;
+  readonly autoHeight?: boolean;
   readonly hidePagination?: boolean;
 }
 
