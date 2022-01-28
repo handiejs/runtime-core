@@ -12,6 +12,7 @@ let defaultTheme: ThemeOptions = {
         disableWhenNoSelection: true,
       },
       filter: {
+        dateFieldRenderType: 'date-range',
         showHintAsPlaceholder: true,
         showValidationRulesAsNative: false,
         showEmptyValueOption: true,

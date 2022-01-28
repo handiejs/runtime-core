@@ -1,4 +1,4 @@
-import { DataValue } from '../../vendors/organik';
+import { DataValue, SearchContext, ListViewContext } from '../../vendors/organik';
 
 import { UnknownFilter, FilterDescriptor } from '../../types/input';
 import { FilterWidgetConfig, IFilterWidget } from '../../types/widget/filter';
@@ -13,6 +13,10 @@ class FilterHeadlessWidget<
 > extends BaseHeadlessWidget<IFilterWidget<VT>, CT> {
   protected getFilter(): FT {
     return this.getProp('filter') as FT;
+  }
+
+  protected getSearchContext(): SearchContext {
+    return this.getViewContext<ListViewContext>().getSearchContext()!;
   }
 
   public getConfig(): CT {

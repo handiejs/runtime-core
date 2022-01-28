@@ -15,6 +15,7 @@ interface ActionCommonBehaviors {
 }
 
 interface FilterCommonBehaviors {
+  dateFieldRenderType?: DateInputRenderType;
   showHintAsPlaceholder?: boolean; // 输入提示作为过滤器占位符显示
   showValidationRulesAsNative?: boolean; // 校验规则作为原生属性
   showEmptyValueOption?: boolean; // 是否显示空值（值为空字符串）的选项

@@ -17,7 +17,16 @@ interface TextFilterWidgetConfig extends FilterWidgetConfig {}
 
 interface EnumFilterWidgetConfig extends FilterWidgetConfig {}
 
-interface DateFilterWidgetConfig extends FilterWidgetConfig {}
+interface DateFilterWidgetConfig extends FilterWidgetConfig {
+  readonly format?: string;
+  readonly showNow?: boolean;
+  readonly disableDate?: (date: Date) => boolean;
+  readonly separator?: string;
+  readonly fromField?: string;
+  readonly fromPlaceholder?: string;
+  readonly toField?: string;
+  readonly toPlaceholder?: string;
+}
 
 interface FilterWidgetState extends BaseWidgetState {}
 

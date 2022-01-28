@@ -25,22 +25,25 @@ function resolveFieldRenderType({ renderType, dataType = '' }: ViewFieldDescript
   return renderType || getDefaultRenderTypeMapOfField()[dataType] || '';
 }
 
-const dataTypeToRenderTypeMapOfFilter: Record<DataType, RenderType> = {
-  [BuiltInDataType.Boolean]: 'select',
-  [BuiltInDataType.String]: 'input',
-  [BuiltInDataType.Text]: 'input',
-  [BuiltInDataType.Integer]: 'number',
-  [BuiltInDataType.Float]: 'number',
-  [BuiltInDataType.Enum]: 'select',
-  [BuiltInDataType.MultiEnum]: 'select',
-  [BuiltInDataType.OneToOne]: 'select',
-  [BuiltInDataType.OneToMany]: 'select',
-  [BuiltInDataType.ManyToMany]: 'select',
-  [BuiltInDataType.ManyToOne]: 'select',
-};
+function getDefaultRenderTypeMapOfFilter(): Record<DataType, RenderType> {
+  return {
+    [BuiltInDataType.Boolean]: 'select',
+    [BuiltInDataType.String]: 'input',
+    [BuiltInDataType.Text]: 'input',
+    [BuiltInDataType.Integer]: 'number',
+    [BuiltInDataType.Float]: 'number',
+    [BuiltInDataType.Enum]: 'select',
+    [BuiltInDataType.MultiEnum]: 'select',
+    [BuiltInDataType.Date]: getBehaviorByKey('common.filter.dateFieldRenderType'),
+    [BuiltInDataType.OneToOne]: 'select',
+    [BuiltInDataType.OneToMany]: 'select',
+    [BuiltInDataType.ManyToMany]: 'select',
+    [BuiltInDataType.ManyToOne]: 'select',
+  };
+}
 
 function resolveFilterRenderType({ renderType, dataType = '' }: FilterDescriptor): string {
-  return renderType || dataTypeToRenderTypeMapOfFilter[dataType] || '';
+  return renderType || getDefaultRenderTypeMapOfFilter()[dataType] || '';
 }
 
 export { resolveFieldRenderType, resolveFilterRenderType };

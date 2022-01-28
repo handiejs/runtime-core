@@ -11,7 +11,7 @@ class DateFieldHeadlessWidget<
   CT extends DateFieldWidgetConfig = DateFieldWidgetConfig
 > extends FieldHeadlessWidget<VT, CT> {
   public getRangeValue(): DateValue[] {
-    const context = this.getViewContext() as ObjectViewContext;
+    const context = this.getViewContext<ObjectViewContext>();
     const { fromField, toField } = this.getConfig();
 
     if (!fromField && !toField) {
