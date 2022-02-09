@@ -1,6 +1,6 @@
 {
   "name": "@handie/runtime-core",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Runtime foundation of Handie",
   "main": "dist/index.js",
   "module": "dist/index.js",
