@@ -13,7 +13,10 @@ interface BooleanFieldWidgetConfig extends FieldWidgetConfig {
 
 interface IntegerFieldWidgetConfig extends FieldWidgetConfig {}
 
-interface FloatFieldWidgetConfig extends FieldWidgetConfig {}
+interface FloatFieldWidgetConfig extends FieldWidgetConfig {
+  readonly rule?: RegExp;
+  readonly message?: string;
+}
 
 interface StringFieldWidgetConfig extends FieldWidgetConfig {}
 
