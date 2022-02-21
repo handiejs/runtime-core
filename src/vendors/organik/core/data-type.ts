@@ -15,7 +15,12 @@ function isDataTypeValid(name: DataType): boolean {
 }
 
 function isDataValueValid(name: DataType, value: any): boolean {
-  return isDataTypeValid(name) ? getDataType(name)!.validator(value) : false;
+  if (!isDataTypeValid(name)) {
+    return false;
+  }
+
+  // Not to validate when `value` is `undefined`
+  return value !== undefined ? getDataType(name)!.validator(value) : true;
 }
 
 export { registerDataType, getDataType, isDataTypeValid, isDataValueValid };

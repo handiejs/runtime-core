@@ -6,14 +6,14 @@ import {
 } from '../vendors/organik';
 
 import { BuiltInDataType } from '../types/data-type';
-import { isNumber } from '../utils';
+import { isNumber, isString } from '../utils';
 
 function getDisplayText(input: InputDescriptor): string {
   return input.label || input.name;
 }
 
 function numberMaxValueChecker(inputValue, propValue, input) {
-  return isNumber(propValue) && inputValue > propValue
+  return isNumber(propValue) && isNumber(inputValue) && inputValue > propValue
     ? {
         success: false,
         message: `'${getDisplayText(input)}' 的值不能大于 ${propValue}`,
@@ -22,7 +22,7 @@ function numberMaxValueChecker(inputValue, propValue, input) {
 }
 
 function numberMinValueChecker(inputValue, propValue, input) {
-  return isNumber(propValue) && inputValue < propValue
+  return isNumber(propValue) && isNumber(inputValue) && inputValue < propValue
     ? {
         success: false,
         message: `'${getDisplayText(input)}' 的值不能小于 ${propValue}`,
@@ -31,7 +31,7 @@ function numberMinValueChecker(inputValue, propValue, input) {
 }
 
 function stringMaxLengthChecker(inputValue, propValue, input) {
-  return isNumber(propValue) && inputValue.length > propValue
+  return isNumber(propValue) && isString(inputValue) && inputValue.length > propValue
     ? {
         success: false,
         message: `'${getDisplayText(input)}' 的长度不能超过 ${propValue} 个字符`,
@@ -40,7 +40,7 @@ function stringMaxLengthChecker(inputValue, propValue, input) {
 }
 
 function stringMinLengthChecker(inputValue, propValue, input) {
-  return isNumber(propValue) && inputValue.length < propValue
+  return isNumber(propValue) && isString(inputValue) && inputValue.length < propValue
     ? {
         success: false,
         message: `'${getDisplayText(input)}' 的长度不能少于 ${propValue} 个字符`,
