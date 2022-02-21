@@ -1,4 +1,4 @@
-import { isString, noop, clone } from '@ntks/toolbox';
+import { isString, isFunction, noop, clone } from '@ntks/toolbox';
 
 import { LocationDescriptor, HistoryLocation, AppHelper } from './typing/app';
 
@@ -29,11 +29,18 @@ let appHelper: AppHelper = {
       return window.history.replaceState({}, '', resolveUrl(location));
     },
   },
-  alert(message: string, callback: () => any = noop) {
+  alert(message: string, callback) {
     window.alert(message);
-    callback();
+
+    if (isFunction(callback)) {
+      callback();
+    }
   },
   confirm: window.confirm,
+  success: noop,
+  error: noop,
+  warning: noop,
+  info: noop,
 };
 
 function registerAppHelper(helper: AppHelper): void {
