@@ -2,6 +2,7 @@ import { EnumFieldOption, FilterDescriptor } from '../input';
 import { BaseWidgetConfig, BaseWidgetState } from './base';
 
 interface FilterWidgetConfig extends BaseWidgetConfig {
+  readonly width?: string | number;
   readonly showHintAsPlaceholder?: boolean;
   readonly searchImmediately?: boolean;
 }
