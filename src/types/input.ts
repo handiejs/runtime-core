@@ -8,6 +8,8 @@ import {
   ViewFieldDescriptor as UnsureTypeViewField,
 } from '../vendors/organik';
 
+import { ObjectValue } from './value';
+
 // Model fields
 
 interface UnknownField extends UnsureTypeField {
@@ -122,7 +124,7 @@ interface UnknownViewField extends UnsureTypeViewField {
   dynamic?: boolean;
   hint?: string;
   available?: ContextExpression;
-  formatter?: (value: DataValue) => DataValue;
+  formatter?: (value: DataValue, contextValue: ObjectValue) => DataValue;
 }
 
 type NumberViewField = UnknownViewField & NumberField;

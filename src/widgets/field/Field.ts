@@ -35,7 +35,9 @@ class FieldHeadlessWidget<
   }
 
   public format(value: VT = this.getProp('value')): string {
-    return isFunction(this.getField().formatter) ? this.getField().formatter!(value) : value;
+    return isFunction(this.getField().formatter)
+      ? this.getField().formatter!(value, this.getViewContext().getValue())
+      : value;
   }
 }
 

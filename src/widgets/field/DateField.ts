@@ -54,7 +54,7 @@ class DateFieldHeadlessWidget<
 
   public formatDate(value: DateValue): DateValue {
     if (isFunction(this.getField().formatter)) {
-      return this.getField().formatter!(value);
+      return this.getField().formatter!(value, this.getViewContext().getValue());
     }
 
     return this.getConfig().format ? createMoment(value).format(this.getConfig().format) : value;
