@@ -3,6 +3,7 @@ import { BaseWidgetConfig, BaseWidgetState } from './base';
 
 interface FilterWidgetConfig extends BaseWidgetConfig {
   readonly showHintAsPlaceholder?: boolean;
+  readonly searchImmediately?: boolean;
 }
 
 interface BooleanFilterWidgetConfig extends FilterWidgetConfig {}

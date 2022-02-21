@@ -24,6 +24,7 @@ interface FilterCommonBehaviors {
 
 interface SearchCommonBehaviors {
   keepConditionInUrl?: boolean;
+  searchWhenSelectableFilterChange?: boolean;
 }
 
 interface FieldCommonBehaviors {

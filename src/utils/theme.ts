@@ -20,6 +20,7 @@ let defaultTheme: ThemeOptions = {
       },
       search: {
         keepConditionInUrl: false,
+        searchWhenSelectableFilterChange: false,
       },
       field: {
         booleanFieldRenderType: 'radio',
