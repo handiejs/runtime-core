@@ -1,3 +1,6 @@
+import { DialogShortcutMethod } from 'petals-ui/dist/dialog';
+import { MessageShortcutMethod } from 'petals-ui/dist/message';
+
 interface LocationDescriptor {
   name: string;
   path: string;
@@ -24,8 +27,14 @@ interface HistoryHelper {
 
 interface AppHelper {
   readonly history: HistoryHelper;
-  alert(message: string, callback?: () => any): void;
-  confirm(message: string, ...args: any[]): void;
+  // dialog shortcuts
+  alert: DialogShortcutMethod;
+  confirm: DialogShortcutMethod;
+  // message shortcuts
+  success: MessageShortcutMethod;
+  error: MessageShortcutMethod;
+  warning: MessageShortcutMethod;
+  info: MessageShortcutMethod;
 }
 
 export { LocationDescriptor, HistoryLocation, LocationRoute, AppHelper };
