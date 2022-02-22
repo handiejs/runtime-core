@@ -15,6 +15,10 @@ class FilterHeadlessWidget<
     return this.getProp('filter') as FT;
   }
 
+  protected getFilterValue(): VT | undefined {
+    return this.getSearchContext().getFilterValue<VT>(this.getFilter().name);
+  }
+
   protected getSearchContext(): SearchContext {
     return this.getViewContext<ListViewContext>().getSearchContext()!;
   }

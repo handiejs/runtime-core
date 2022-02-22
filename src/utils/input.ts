@@ -1,4 +1,5 @@
 import { isArray, isFunction } from '../vendors/toolbox';
+import { InputDescriptor } from '../vendors/organik';
 
 import {
   EnumFieldOption,
@@ -60,4 +61,26 @@ function getCachedEnumOptions(
     : undefined;
 }
 
-export { cacheDynamicEnumOptions, getCachedEnumOptions };
+function resolveRangePlaceholders<CT extends Record<string, any>>(
+  inputs: InputDescriptor[],
+  config: CT,
+): string[] {
+  const { fromField, fromPlaceholder, toField, toPlaceholder } = config;
+
+  const labels: string[] = ['开始日期', '结束日期'];
+  const placeholders: string[] = [];
+
+  [
+    { name: fromField, placeholder: fromPlaceholder },
+    { name: toField, placeholder: toPlaceholder },
+  ].forEach((targetField, idx) => {
+    const { name, placeholder } = targetField;
+    const input = name ? inputs.find(f => name === f.name) : undefined;
+
+    placeholders[idx] = placeholder || `请选择${(input && input.label) || labels[idx]}`;
+  });
+
+  return placeholders;
+}
+
+export { cacheDynamicEnumOptions, getCachedEnumOptions, resolveRangePlaceholders };

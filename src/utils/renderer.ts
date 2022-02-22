@@ -34,7 +34,7 @@ function getDefaultRenderTypeMapOfFilter(): Record<DataType, RenderType> {
     [BuiltInDataType.Float]: 'number',
     [BuiltInDataType.Enum]: 'select',
     [BuiltInDataType.MultiEnum]: 'select',
-    [BuiltInDataType.Date]: getBehaviorByKey('common.filter.dateFieldRenderType'),
+    [BuiltInDataType.Date]: getBehaviorByKey('common.filter.dateFilterRenderType'),
     [BuiltInDataType.OneToOne]: 'select',
     [BuiltInDataType.OneToMany]: 'select',
     [BuiltInDataType.ManyToMany]: 'select',

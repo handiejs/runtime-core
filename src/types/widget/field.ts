@@ -1,3 +1,4 @@
+import { ObjectValue, DateValue } from '../value';
 import { EnumFieldOption, ViewFieldDescriptor } from '../input';
 import { BaseWidgetConfig, BaseWidgetState } from './base';
 
@@ -31,9 +32,14 @@ interface ResolvedEnumFieldOption extends Omit<EnumFieldOption, 'available'> {
 }
 
 interface DateFieldWidgetConfig extends FieldWidgetConfig {
-  readonly format?: string;
+  readonly format?: string; // display format
+  readonly valueFormat?: string; // submitted value's format, default to `format`
   readonly showNow?: boolean;
-  readonly disableDate?: (date: Date) => boolean;
+  readonly disableDate?: (
+    value: DateValue | DateValue[],
+    date: Date,
+    contextValue: ObjectValue,
+  ) => boolean;
   readonly separator?: string;
   readonly fromField?: string;
   readonly fromPlaceholder?: string;

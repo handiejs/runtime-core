@@ -1,4 +1,4 @@
-import { DataValue } from '../../vendors/organik';
+import { DataValue, ObjectViewContext } from '../../vendors/organik';
 
 import { UnknownViewField, ViewFieldDescriptor } from '../../types/input';
 import { FieldWidgetConfig, IFieldWidget } from '../../types/widget/field';
@@ -14,6 +14,10 @@ class FieldHeadlessWidget<
 > extends BaseHeadlessWidget<IFieldWidget<VT>, CT> {
   protected getField(): FT {
     return this.getProp('field') as FT;
+  }
+
+  protected getFieldValue(): VT | undefined {
+    return this.getViewContext<ObjectViewContext>().getFieldValue<VT>(this.getField().name);
   }
 
   public getConfig(): CT {

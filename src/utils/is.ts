@@ -11,12 +11,18 @@ function isEnumField(field: ViewFieldDescriptor): boolean {
   return includes(field.dataType, [BuiltInDataType.Enum, BuiltInDataType.MultiEnum]);
 }
 
+function isUnixTimestamp(value: DataValue): boolean {
+  return isNumber(value) && /^[0-9]{10}(\.[0-9]{3})?$/.test(`${value}`);
+}
+
 function isDateValue(value: DataValue): boolean {
   if (isDate(value)) {
     return true;
   }
 
-  return isString(value) || isNumber(value) ? createMoment(value as DateValue).isValid() : false;
+  return isString(value) || isNumber(value)
+    ? createMoment((isUnixTimestamp(value) ? value * 1000 : value) as DateValue).isValid()
+    : false;
 }
 
-export { isEnumField, isDateValue };
+export { isEnumField, isUnixTimestamp, isDateValue };

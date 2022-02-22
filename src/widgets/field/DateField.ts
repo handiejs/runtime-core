@@ -2,7 +2,14 @@ import { ObjectViewContext } from '../../vendors/organik';
 
 import { DateValue } from '../../types/value';
 import { DateFieldWidgetConfig } from '../../types/widget/field';
-import { isFunction, createMoment } from '../../utils';
+import {
+  isFunction,
+  isUnixTimestamp,
+  isDateValue,
+  createMoment,
+  resolveDateValue,
+  resolveRangePlaceholders,
+} from '../../utils';
 
 import { FieldHeadlessWidget } from './Field';
 
@@ -10,54 +17,78 @@ class DateFieldHeadlessWidget<
   VT extends DateValue | DateValue[],
   CT extends DateFieldWidgetConfig = DateFieldWidgetConfig
 > extends FieldHeadlessWidget<VT, CT> {
+  private __defaultFormat: string = '';
+
+  public setDefaultFormat(format: string): void {
+    this.__defaultFormat = format;
+  }
+
+  public getDisplayFormat(): string {
+    return this.getConfig().format || this.__defaultFormat;
+  }
+
+  private getValueFormat(): string {
+    return this.getConfig().valueFormat || this.getDisplayFormat();
+  }
+
+  private formatDate(value: DateValue): DateValue {
+    const resolved = isUnixTimestamp(value) ? (value as number) * 1000 : value;
+
+    return isFunction(this.getField().formatter)
+      ? this.getField().formatter!(resolved, this.getViewContext().getValue())
+      : createMoment(resolved).format(this.getDisplayFormat());
+  }
+
+  public resolveDateValue(date: Date | null): DateValue {
+    return resolveDateValue(date, this.getValueFormat());
+  }
+
+  /**
+   * Get display date value
+   *
+   * @returns date value for display
+   */
+  public getDateValue(): DateValue {
+    const value = this.getFieldValue() as DateValue;
+
+    return isDateValue(value) ? this.formatDate(value) : value;
+  }
+
+  /**
+   * Get display date range
+   *
+   * @returns date range for display
+   */
   public getRangeValue(): DateValue[] {
-    const context = this.getViewContext<ObjectViewContext>();
     const { fromField, toField } = this.getConfig();
 
+    let range: DateValue[];
+
     if (!fromField && !toField) {
-      return context.getFieldValue(this.getField().name) as DateValue[];
+      range = (this.getFieldValue() || []) as DateValue[];
+    } else {
+      range = ['', ''];
+
+      const context = this.getViewContext<ObjectViewContext>();
+
+      if (fromField) {
+        range[0] = context.getFieldValue(fromField) || '';
+      }
+
+      if (toField) {
+        range[1] = context.getFieldValue(toField) || '';
+      }
     }
 
-    const range: DateValue[] = ['', ''];
-
-    if (fromField) {
-      range[0] = context.getFieldValue(fromField) || '';
-    }
-
-    if (toField) {
-      range[1] = context.getFieldValue(toField) || '';
-    }
-
-    return range;
+    return range.map(date => (date ? this.formatDate(date) : date));
   }
 
   public getRangePlaceholders(): string[] {
-    const { fromField, fromPlaceholder, toField, toPlaceholder } = this.getConfig();
-
-    const labels: string[] = ['开始日期', '结束日期'];
-    const placeholders: string[] = [];
-
-    const fields = this.getViewContext().getFields();
-
-    [
-      { name: fromField, placeholder: fromPlaceholder },
-      { name: toField, placeholder: toPlaceholder },
-    ].forEach((targetField, idx) => {
-      const { name, placeholder } = targetField;
-      const field = name ? fields.find(f => name === f.name) : undefined;
-
-      placeholders[idx] = placeholder || `请选择${(field && field.label) || labels[idx]}`;
-    });
-
-    return placeholders;
+    return resolveRangePlaceholders(this.getViewContext().getFields(), this.getConfig());
   }
 
-  public formatDate(value: DateValue): DateValue {
-    if (isFunction(this.getField().formatter)) {
-      return this.getField().formatter!(value, this.getViewContext().getValue());
-    }
-
-    return this.getConfig().format ? createMoment(value).format(this.getConfig().format) : value;
+  public getSeparator(): string {
+    return this.getConfig().separator || '-';
   }
 }
 

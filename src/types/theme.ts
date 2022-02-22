@@ -15,7 +15,9 @@ interface ActionCommonBehaviors {
 }
 
 interface FilterCommonBehaviors {
-  dateFieldRenderType?: DateInputRenderType;
+  dateFilterRenderType?: DateInputRenderType;
+  dateTimeFormat?: string;
+  dateFormat?: string;
   showHintAsPlaceholder?: boolean; // 输入提示作为过滤器占位符显示
   showValidationRulesAsNative?: boolean; // 校验规则作为原生属性
   showEmptyValueOption?: boolean; // 是否显示空值（值为空字符串）的选项
@@ -31,6 +33,8 @@ interface FieldCommonBehaviors {
   booleanFieldRenderType?: BooleanInputRenderType; // 布尔字段默认部件
   enumFieldRenderType?: EnumInputRenderType;
   dateFieldRenderType?: DateInputRenderType;
+  dateTimeFormat?: string;
+  dateFormat?: string;
   showUnavailableOption?: boolean;
   showHintAsPlaceholder?: boolean; // 输入提示作为表单控件占位符显示
   showHintAtFormItem?: boolean; // 输入提示显示在表单条目中
