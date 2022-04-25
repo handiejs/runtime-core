@@ -16,8 +16,11 @@ interface TableViewWidgetConfig extends ListViewWidgetConfig {
   readonly showSerialNumber?: boolean;
   readonly showTooltipWhenContentOverflow?: boolean;
   readonly selectionColumnWidth?: number | string;
+  readonly selectionColumnAlignment?: 'left' | 'center' | 'right';
   readonly serialNumberColumnWidth?: number | string;
+  readonly serialNumberColumnAlignment?: 'left' | 'center' | 'right';
   readonly operationColumnWidth?: number | string;
+  readonly operationColumnAlignment?: 'left' | 'center' | 'right';
   readonly autoHeight?: boolean;
   readonly hidePagination?: boolean;
 }
