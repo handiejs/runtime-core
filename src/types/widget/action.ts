@@ -7,6 +7,7 @@ interface ActionWidgetConfig extends BaseWidgetConfig {
   readonly iconOnly?: boolean;
   readonly showIcon?: boolean;
   readonly disableWhenNoSelection?: boolean;
+  readonly view?: string;
 }
 
 interface IActionWidget<CT extends ActionWidgetConfig = ActionWidgetConfig> {
