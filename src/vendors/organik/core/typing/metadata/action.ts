@@ -21,7 +21,11 @@ interface ActionDescriptor<CT extends ConfigType = ConfigType> {
   renderType?: RenderType;
   widget?: ComponentRenderer;
   config?: CT;
-  execute?: <ViewContext>(viewContext: ViewContext, app: AppHelper) => Promise<any> | any;
+  execute?: <ViewContext>(
+    viewContext: ViewContext,
+    app: AppHelper,
+    config: CT,
+  ) => Promise<any> | any;
 }
 
 interface ServerAction extends ActionDescriptor {

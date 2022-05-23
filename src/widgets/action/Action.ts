@@ -47,7 +47,7 @@ class ActionHeadlessWidget<
 
     const executeAction = async () => {
       if (execute) {
-        await Promise.resolve(execute(viewContext, appHelper));
+        await Promise.resolve(execute(viewContext, appHelper, this.getConfig()));
       }
     };
 
